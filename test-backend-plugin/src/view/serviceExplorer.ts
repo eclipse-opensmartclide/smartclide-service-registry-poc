@@ -1,5 +1,14 @@
+/*******************************************************************************
+ * Copyright (C) 2021 KAIROS DS
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ ******************************************************************************/
+
 import * as theia from '@theia/plugin';
-import { Uri } from '@theia/plugin';
 
 import * as bent from 'bent';
 import { IServiceData } from 'src/handler/IServiceData';
@@ -39,11 +48,12 @@ export class FtpTreeDataProvider implements theia.TreeDataProvider<IServiceData>
         this._onDidChangeTreeData.fire();
     }
 
-    public getTreeItem(element: IServiceData): theia.TreeItem {
+    public getTreeItem(element: IServiceData): theia.TreeItem2 {
         return {
             label: element.serviceId,
             description: element.serviceDescription,
-            resourceUri: Uri.parse(element.serviceUrl)
+            tooltip: element.serviceUrl,
+            collapsibleState: theia.TreeItemCollapsibleState.None
         };
     }
 

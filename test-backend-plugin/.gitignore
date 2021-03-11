@@ -1,3 +1,7 @@
-dist/
+lib/
 node_modules/
 *.theia
+.DS_Store
+package-lock.json
+*.log
+*.lock
